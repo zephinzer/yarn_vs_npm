@@ -1,0 +1,40 @@
+{
+  "scripts": {
+    "build": "(npm build-npm3) && (npm build-npm5) && (npm build-yarn) && (docker image -a | head -n 3)",
+    "build-npm3": "docker build --no-cache -f ./npm3.Dockerfile -t node_modulesoptimize_npm3 .",
+    "build-npm5": "docker build --no-cache -f ./npm5.Dockerfile -t node_modulesoptimize_npm5 .",
+    "build-yarn": "docker build --no-cache -f ./yarn.Dockerfile -t node_modulesoptimize_yarn .",
+    "sizeof-npm3": "docker run --entrypoint='du' node_modulesoptimize_npm3 -d1 -k",
+    "sizeof-npm5": "docker run --entrypoint='du' node_modulesoptimize_npm5 -d1 -k",
+    "sizeof-yarn": "docker run --entrypoint='du' node_modulesoptimize_yarn -d1 -k"
+  },
+  "dependencies": {
+    "authasher": "^1.0.0",
+    "cors": "^2.8.4",
+    "express": "^4.12.3",
+    "firebase-admin": "^5.4.3",
+    "helmet": "^3.9.0",
+    "jsonwebtoken": "^8.1.0",
+    "knex": "^0.14.0",
+    "latlon-geohash": "^1.1.0",
+    "morgan": "^1.9.0",
+    "mysql2": "^1.5.0",
+    "swagger-express-mw": "^0.1.0",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^4.9.0",
+    "eslint-config-google": "^0.9.1",
+    "istanbul": "^0.4.5",
+    "nodemon": "^1.12.1",
+    "rewire": "^2.5.2",
+    "should": "^7.1.0",
+    "sinon": "^4.0.2",
+    "sinon-chai": "^2.14.0",
+    "supertest": "3.0.0",
+    "swagger": "^0.7.5",
+    "swagger-tools": "^0.10.3"
+  }
+}

@@ -1,0 +1,17 @@
+version: "3"
+services:
+  npm3_test:
+    build:
+      context: .
+      dockerfile: ./npm3.Dockerfile
+    container_name: npm3_node_modules_test
+  npm5_test:
+    build:
+      context: .
+      dockerfile: ./npm5.Dockerfile
+    container_name: npm5_node_modules_test
+  yarn_test:
+    build:
+      context: .
+      dockerfile: ./yarn.Dockerfile
+    container_name: yarn_node_modules_test

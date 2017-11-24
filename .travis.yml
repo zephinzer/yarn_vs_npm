@@ -1,0 +1,26 @@
+sudo: required
+language: bash
+services:
+  - docker
+branches:
+  only:
+    - master
+notifications:
+  email:
+    - dev@joeir.net
+stages:
+  - build
+jobs:
+  include:
+    - stage: build
+      script:
+        - docker build -f ./npm3.Dockerfile -t yarn_vs_npm_npm3 .
+        - docker run yarn_vs_npm_npm3 -k
+    - stage: build
+      script:
+        - docker build -f ./npm5.Dockerfile -t yarn_vs_npm_npm5 .
+        - docker run yarn_vs_npm_npm5 -k
+    - stage: build
+      script:
+        - docker build -f ./yarn.Dockerfile -t yarn_vs_npm_yarn .
+        - docker run yarn_vs_npm_yarn -k
