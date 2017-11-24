@@ -14,13 +14,13 @@ jobs:
   include:
     - stage: build
       script:
-        - docker build -f ./npm3.Dockerfile -t yarn_vs_npm_npm3 .
-        - docker run yarn_vs_npm_npm3 -k
+        - docker build -f ./npm3.Dockerfile -t yarn_vs_npm_npm3 . &>/dev/null
+        - docker run yarn_vs_npm_npm3 -k | tail -n 1 | cut -f 1
     - stage: build
       script:
-        - docker build -f ./npm5.Dockerfile -t yarn_vs_npm_npm5 .
-        - docker run yarn_vs_npm_npm5 -k
+        - docker build -f ./npm5.Dockerfile -t yarn_vs_npm_npm5 . &>/dev/null
+        - docker run yarn_vs_npm_npm5 -k | tail -n 1 | cut -f 1
     - stage: build
       script:
-        - docker build -f ./yarn.Dockerfile -t yarn_vs_npm_yarn .
-        - docker run yarn_vs_npm_yarn -k
+        - docker build -f ./yarn.Dockerfile -t yarn_vs_npm_yarn . &>/dev/null
+        - docker run yarn_vs_npm_yarn -k | tail -n 1 | cut -f 1
